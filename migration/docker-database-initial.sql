@@ -1,4 +1,4 @@
-create table personalidades(
+create table if exists personalidades(
     id serial primary key,
     nome varchar,
     historia varchar
