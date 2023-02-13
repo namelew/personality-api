@@ -4,6 +4,7 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 	"github.com/namelew/personality-api/controllers"
 	"github.com/namelew/personality-api/middleware"
@@ -18,5 +19,5 @@ func HandleRequest() {
 	r.HandleFunc("/api/personalidades", controllers.CriarPersonalidade).Methods("Post")
 	r.HandleFunc("/api/personalidades/{id}", controllers.DeletarPersonalidade).Methods("Delete")
 	r.HandleFunc("/api/personalidades/{id}", controllers.EditarPersonalidade).Methods("Put")
-	log.Fatal(http.ListenAndServe(":8000", r))
+	log.Fatal(http.ListenAndServe(":8000", handlers.CORS(handlers.AllowedOrigins([]string{"*"}))(r)))
 }
