@@ -1,12 +1,10 @@
 # REST API IN GOLANG
 A personalities registrer api, using golang in backend with gorilla as router and handler and gorm as database interface
 ## Requeriments
----
  * Go 1.19 or high
  * Node.js 16.9 or lower
  * Docker
 ## Run
----
 * Backend
 ``` 
     go mod tidy
@@ -28,7 +26,6 @@ A personalities registrer api, using golang in backend with gorilla as router an
     docker compose -f ./database.yaml up -d
 ```
 ## Routes
----
 ### Insert
  * Url: http://{IP}:8000/api/personalidades
  * Request Expected:
