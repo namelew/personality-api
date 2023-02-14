@@ -36,7 +36,7 @@ func CriarPersonalidade(w http.ResponseWriter, r *http.Request) {
 
 	json.NewDecoder(r.Body).Decode(&personalidade)
 
-	database.DB.Create(&personalidade)
+	go database.DB.Create(&personalidade)
 
 	json.NewEncoder(w).Encode(&personalidade)
 }
@@ -47,7 +47,7 @@ func DeletarPersonalidade(w http.ResponseWriter, r *http.Request) {
 
 	var personalidade models.Personalidade
 
-	database.DB.Delete(&personalidade, id)
+	go database.DB.Delete(&personalidade, id)
 
 	json.NewEncoder(w).Encode(personalidade)
 }
@@ -62,7 +62,7 @@ func EditarPersonalidade(w http.ResponseWriter, r *http.Request) {
 
 	json.NewDecoder(r.Body).Decode(&personalidade)
 
-	database.DB.Save(&personalidade)
+	go database.DB.Save(&personalidade)
 
 	json.NewEncoder(w).Encode(personalidade)
 }
